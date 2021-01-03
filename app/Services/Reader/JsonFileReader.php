@@ -18,6 +18,7 @@ class JsonFileReader extends Reader
     {
         $data = json_decode(file_get_contents($this->getFilePath()), 1) ?? [];
         $this->setData($data);
+        return $this;
     }
 
     public function getData()
