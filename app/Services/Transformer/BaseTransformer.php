@@ -16,6 +16,7 @@ abstract class BaseTransformer
      * @param string $dataKey
      * @param mixed ...$arguments
      * @return array
+     * @throws TransformerException
      */
     public function transformCollection ($collection, $callback = 'transform', $dataKey = 'data', ...$arguments)
     {
@@ -43,13 +44,16 @@ abstract class BaseTransformer
      * @param string $callback
      * @param mixed ...$arguments
      * @return Collection|SupportCollection
+     * @throws TransformerException
      */
     public function transformCollectionRaw ($collection, $callback = 'transform', ...$arguments)
     {
         if (!($collection instanceof Collection) && !($collection instanceof Paginator) && !($collection instanceof SupportCollection)) {
             throw new TransformerException();
         }
-
+        if (!method_exists($this, $callback)) {
+            throw new TransformerException('Invalid callback');
+        }
         return $collection->map(function ($row) use ($callback, $arguments) {
             return call_user_func_array(array( $this, $callback ), [ $row, $arguments ]);
         });
