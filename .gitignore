@@ -5,3 +5,4 @@ Homestead.yaml
 .env
 .editorconfig
 /node_modules
+.phpunit.result.cache
