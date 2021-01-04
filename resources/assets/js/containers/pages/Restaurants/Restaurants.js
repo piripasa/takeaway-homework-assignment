@@ -5,6 +5,7 @@ import Sidebar from "./Sidebar";
 import Content from "./Content";
 import {serialize} from "../../../lib/function";
 import {addFavoriteRestaurant, fetchRestaurants} from "../../../actions/RestaurantAction";
+import {beginTheLoader, endTheLoader} from "../../../lib/startStopTheLoader";
 
 class Restaurants extends Component {
 
@@ -54,7 +55,10 @@ class Restaurants extends Component {
     }
 
     handleFilter() {
-        this.props.fetchRestaurants(serialize(this.state));
+        beginTheLoader();
+        this.props.fetchRestaurants(serialize(this.state)).then(res => {
+            endTheLoader()
+        });
     }
 
     handleFavourite(name) {

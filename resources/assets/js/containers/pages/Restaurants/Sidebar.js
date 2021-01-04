@@ -14,12 +14,14 @@ class Sidebar extends Component {
                 <div className="sidebar-sticky">
                     <form className="form-control">
                         <div className="form-group">
+                            <label>Search Restaurant</label>
                             <NameFilter onNameTyping={this.props.onNameTyping}/>
                         </div>
                         <div className="form-group">
                             <StatusButtonList currentState={currentState} onStatusSelect={onStatusSelect} options={OPENING_STATUS}/>
                         </div>
                         <div className="form-group">
+                            <label>Sort Restaurant</label>
                             <SortOptionLIst currentState={currentState} onSortingSelect={onSortingSelect} options={SORT_OPTIONS}/>
                         </div>
                         <div className="form-group">
