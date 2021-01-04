@@ -5,7 +5,7 @@ import StatusButtonItem from "../components/Restaurant/Sidebar/StatusButtonItem"
 
 describe("StatusButtonItem", () => {
     it('should render component', () => {
-        const wrapper = shallow(<StatusButtonItem options={{
+        const wrapper = shallow(<StatusButtonItem currentState={{status:'open'}} options={{
             icon: 'fa-check',
             slug: 'open',
             text: 'Open'
@@ -14,7 +14,7 @@ describe("StatusButtonItem", () => {
     });
 
     it('allows us to set props', () => {
-        const wrapper = mount(<StatusButtonItem options={{
+        const wrapper = mount(<StatusButtonItem currentState={{status:'open'}} options={{
             icon: 'fa-check',
             slug: 'closed',
             text: 'Closed'
@@ -26,7 +26,7 @@ describe("StatusButtonItem", () => {
 
     it('simulates click events', () => {
         const mockCallBack = jest.fn().mockReturnValue('open');
-        const wrapper = shallow(<StatusButtonItem onStatusSelect={mockCallBack} options={{
+        const wrapper = shallow(<StatusButtonItem currentState={{status:'open'}} onStatusSelect={mockCallBack} options={{
             icon: 'fa-check',
             slug: 'bestMatch',
             text: 'Best Match'

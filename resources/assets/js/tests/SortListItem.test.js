@@ -5,16 +5,16 @@ import SortListItem from "../components/Restaurant/Sidebar/SortListItem";
 
 describe("SortListItem", () => {
     it('should render component', () => {
-        const wrapper = shallow(<SortListItem options={{
+        const wrapper = shallow(<SortListItem currentState={{sortBy:'bestMatch'}} options={{
             icon: 'fa-crosshairs',
             slug: 'bestMatch',
             text: 'Best Match'
         }}/>);
-        expect(wrapper.find('li')).toBeDefined();
+        expect(wrapper.find('a')).toBeDefined();
     });
 
     it('allows us to set props', () => {
-        const wrapper = mount(<SortListItem options={{
+        const wrapper = mount(<SortListItem currentState={{sortBy:'bestMatch'}} options={{
             icon: 'fa-crosshairs',
             slug: 'bestMatch',
             text: 'Best Match'
@@ -26,13 +26,13 @@ describe("SortListItem", () => {
 
     it('simulates click events', () => {
         const mockCallBack = jest.fn().mockReturnValue('bestMatch');
-        const wrapper = shallow(<SortListItem onSortingSelect={mockCallBack} options={{
+        const wrapper = shallow(<SortListItem currentState={{sortBy:'bestMatch'}} onSortingSelect={mockCallBack} options={{
             icon: 'fa-crosshairs',
             slug: 'bestMatch',
             text: 'Best Match'
         }}/>);
 
-        wrapper.find('li').simulate('click');
+        wrapper.find('a').simulate('click');
         expect(mockCallBack.mock.calls.length).toEqual(1);
         expect(mockCallBack.mock.results[0].value).toEqual('bestMatch');
     });
