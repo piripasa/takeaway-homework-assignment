@@ -34,7 +34,8 @@ class RestaurantController extends ApiController
                 'sortBy' => $request->get('sortBy', 'distance'),
                 'sortType' => $request->get('sortType', 'asc'),
                 'status' => $request->get('status', ''),
-                'name' => $request->get('name', '')
+                'name' => $request->get('name', ''),
+                'favourites' => array_filter(explode(',', $request->get('favourites', '')))
             ];
 
             $repository = new RestaurantRepository(new JsonFileReader(base_path('data/sample.json')), new ArrayQueryEngine());
@@ -42,7 +43,7 @@ class RestaurantController extends ApiController
             return $this->sendResponse(
                 $this->transformer->transformCollection(
                     $pagination->paginate(
-                        $request->get('perPage', 5),
+                        $request->get('perPage', 25),
                         $request->get('page', 1)
                     ),
                     'transform',

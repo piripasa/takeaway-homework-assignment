@@ -1,7 +1,4 @@
 import React, {Component} from "react";
-import {addFavoriteRestaurant} from "../../../../actions/RestaurantAction";
-import {bindActionCreators} from "redux";
-import {connect} from "react-redux";
 
 class FavouriteButton extends Component {
 
@@ -11,11 +8,11 @@ class FavouriteButton extends Component {
     }
 
     handleClick() {
-        this.props.addFavoriteRestaurant({ name: this.props.item.name})
+        this.props.onFavouriteClick(this.props.item.name)
     }
 
     render() {
-        const isFavourite = this.props.favorites.includes(this.props.item.name);
+        const isFavourite = this.props.favourites.includes(this.props.item.name);
         return (
             <button type="button" className="btn btn-sm btn-default" onClick={this.handleClick}>
                 {
@@ -28,16 +25,4 @@ class FavouriteButton extends Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {
-        favorites: state.restaurantReducer.favorites
-    }
-}
-
-function mapDispatchToProps(dispatch) {
-    return bindActionCreators({
-        addFavoriteRestaurant
-    }, dispatch)
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(FavouriteButton)
+export default FavouriteButton

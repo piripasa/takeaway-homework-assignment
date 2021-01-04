@@ -3,11 +3,12 @@ import NameFilter from "../../../components/Restaurant/Sidebar/NameFilter";
 import StatusButtonList from "../../../components/Restaurant/Sidebar/StatusButtonList";
 import SortOptionLIst from "../../../components/Restaurant/Sidebar/SortOptionLIst";
 import {OPENING_STATUS, SORT_OPTIONS} from "../../../config";
+import ShowFavouritesButton from "../../../components/Restaurant/Sidebar/ShowFavouritesButton";
 
 class Sidebar extends Component {
 
     render() {
-        const {currentState, onStatusSelect, onSortingSelect} = this.props
+        const {currentState, onStatusSelect, onSortingSelect, onShowFavourites, favourites} = this.props
         return (
             <nav className="col-md-3 d-none d-md-block bg-light sidebar">
                 <div className="sidebar-sticky">
@@ -20,6 +21,9 @@ class Sidebar extends Component {
                         </div>
                         <div className="form-group">
                             <SortOptionLIst currentState={currentState} onSortingSelect={onSortingSelect} options={SORT_OPTIONS}/>
+                        </div>
+                        <div className="form-group">
+                            <ShowFavouritesButton onShowFavourites={onShowFavourites} favourites={favourites}/>
                         </div>
                     </form>
                 </div>

@@ -39,6 +39,9 @@ class RestaurantRepository implements RepositoryInterface
         if ($params['name'] != '') {
             $query->whereStartsWith('name', $params['name']);
         }
+        if (!empty($params['favourites'])) {
+            $query->whereIn('name', $params['favourites']);
+        }
 
         $query->sortBy('sortingValues.'.$params['sortBy'], $params['sortType']);
         return $query->toArray();

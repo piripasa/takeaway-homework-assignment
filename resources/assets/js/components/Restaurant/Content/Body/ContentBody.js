@@ -4,9 +4,13 @@ import {getKey} from "../../../../lib/function";
 
 class ContentBody extends Component {
     renderList() {
-        const {currentState, restaurants} = this.props
+        const {currentState, restaurants, favourites, onFavouriteClick} = this.props
         return restaurants.map(item => {
-            return <ListItem key={getKey()} item={item} currentState={currentState}/>
+            return <ListItem key={getKey()}
+                             item={item}
+                             currentState={currentState}
+                             favourites={favourites}
+                             onFavouriteClick={onFavouriteClick}/>
         })
     }
 

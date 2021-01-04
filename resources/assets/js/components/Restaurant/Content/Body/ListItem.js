@@ -6,7 +6,7 @@ import FavouriteButton from "./FavouriteButton";
 class ListItem extends Component {
 
     render() {
-        const {item, currentState} = this.props
+        const {item, currentState, favourites} = this.props
         return (
             <div className="card">
                 <div className="card-header">{item.name}</div>
@@ -16,7 +16,7 @@ class ListItem extends Component {
                 <div className="card-footer text-muted">
                     <div className="btn-group special">
                         <StatusLabel status={item.status}/>
-                        <FavouriteButton item={item}/>
+                        <FavouriteButton item={item} favourites={favourites} onFavouriteClick={this.props.onFavouriteClick}/>
                     </div>
                 </div>
             </div>
