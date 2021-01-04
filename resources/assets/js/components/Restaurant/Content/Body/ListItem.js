@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import SortingList from "./SortingList";
+import StatusLabel from "./StatusLabel";
 
 class ListItem extends Component {
 
@@ -13,7 +14,7 @@ class ListItem extends Component {
                 </div>
                 <div className="card-footer text-muted">
                     <div className="btn-group special">
-                        <button type="button" className="btn btn-sm btn-default">{item.status}</button>
+                        <StatusLabel status={item.status}/>
                         <button type="button" className="btn btn-sm btn-default">Favourite</button>
                     </div>
                 </div>

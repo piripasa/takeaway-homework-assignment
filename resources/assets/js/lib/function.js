@@ -1,3 +1,5 @@
+import {OPENING_STATUS} from "../config";
+
 export const getKey = () => {
     return Math.random() + Math.random()
 };
@@ -27,4 +29,10 @@ export const spaceCamel = (string) => {
     return string.replace(/([A-Z])/g, ' $1').replace(/^./, function (str) {
         return str.toUpperCase();
     });
+}
+
+export const findOpeningStatusBySlug = (value) => {
+    return OPENING_STATUS.find(obj => {
+        return obj.slug === value
+    })
 }

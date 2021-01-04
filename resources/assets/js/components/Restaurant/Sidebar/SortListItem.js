@@ -14,7 +14,7 @@ class SortListItem extends Component {
     render() {
         const {options} = this.props
         return (
-            <a href="#" className={`list-group-item list-group-item-action ${this.props.currentState.sortBy == options.slug ? 'active' : ''}`} onClick={this.handleClick}>
+            <a href="#" className={`list-group-item list-group-item-action ${this.props.currentState.sortBy === options.slug ? 'active' : ''}`} onClick={this.handleClick}>
                 <i className={`fa ${options.icon}`} aria-hidden="true"/> {options.text}
             </a>
         )
