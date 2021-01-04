@@ -6,3 +6,5 @@ Homestead.yaml
 .editorconfig
 /node_modules
 .phpunit.result.cache
+public/js/app.js
+public/css/app.css
