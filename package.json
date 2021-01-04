@@ -13,7 +13,7 @@
     },
     "jest": {
         "roots": [
-            "<rootDir>/resources/assets/js/test"
+            "<rootDir>/resources/assets/js/tests"
         ]
     },
     "devDependencies": {
