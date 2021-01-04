@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NameFilter from "../../../components/Restaurant/Sidebar/NameFilter";
 import StatusButtonList from "../../../components/Restaurant/Sidebar/StatusButtonList";
 import SortOptionLIst from "../../../components/Restaurant/Sidebar/SortOptionLIst";
+import {OPENING_STATUS, SORT_OPTIONS} from "../../../config";
 
 class Sidebar extends Component {
 
@@ -15,10 +16,10 @@ class Sidebar extends Component {
                             <NameFilter onNameTyping={this.props.onNameTyping}/>
                         </div>
                         <div className="form-group">
-                            <StatusButtonList currentState={currentState} onStatusSelect={onStatusSelect}/>
+                            <StatusButtonList currentState={currentState} onStatusSelect={onStatusSelect} options={OPENING_STATUS}/>
                         </div>
                         <div className="form-group">
-                            <SortOptionLIst currentState={currentState} onSortingSelect={onSortingSelect}/>
+                            <SortOptionLIst currentState={currentState} onSortingSelect={onSortingSelect} options={SORT_OPTIONS}/>
                         </div>
                     </form>
                 </div>

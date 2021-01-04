@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {SORT_OPTIONS} from "../../../config";
 import SortListItem from "./SortListItem";
+import {getKey} from "../../../lib/function";
 
 class SortOptionLIst extends Component {
 
     renderList() {
-        const {currentState, onSortingSelect} = this.props
-        return SORT_OPTIONS.map(item => {
-            return <SortListItem currentState={currentState} onSortingSelect={onSortingSelect} options={item}/>
+        const {currentState, onSortingSelect, options} = this.props
+        return options.map(item => {
+            return <SortListItem key={getKey()} currentState={currentState} onSortingSelect={onSortingSelect} options={item}/>
         })
     }
 

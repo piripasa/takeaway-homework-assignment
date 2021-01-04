@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
-import {OPENING_STATUS} from "../../../config";
 import StatusButtonItem from "./StatusButtonItem";
+import {getKey} from "../../../lib/function";
 
 class StatusButtonList extends Component {
 
     renderList() {
-        const {currentState, onStatusSelect} = this.props
-        return OPENING_STATUS.map(item => {
-            return <StatusButtonItem currentState={currentState} onStatusSelect={onStatusSelect} options={item}/>
+        const {currentState, onStatusSelect, options} = this.props
+        return options.map(item => {
+            return <StatusButtonItem key={getKey()} currentState={currentState} onStatusSelect={onStatusSelect} options={item}/>
         })
     }
 
