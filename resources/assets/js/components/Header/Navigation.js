@@ -6,7 +6,7 @@ class Navigation extends Component {
         return (
             <ul className="navbar-nav px-3">
                 <li className="nav-item text-nowrap">
-                    <a className="nav-link" href="#">GitHub</a>
+                    <a className="nav-link" href="https://github.com/piripasa/visualize-restaurant-list" target="_blank">GitHub</a>
                 </li>
             </ul>
         )
