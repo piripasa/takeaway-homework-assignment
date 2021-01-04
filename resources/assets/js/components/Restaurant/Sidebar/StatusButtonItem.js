@@ -14,7 +14,7 @@ class StatusButtonItem extends Component {
     render() {
         const {options} = this.props
         return (
-            <button type="button" className="btn btn-sm btn-outline-secondary" onClick={this.handleClick}>
+            <button type="button" className={`btn btn-sm btn-outline-secondary ${this.props.currentState.status == options.slug ? 'active' : ''}`} onClick={this.handleClick}>
                 <i className={`fa ${options.icon}`} aria-hidden="true"/> {options.text}
             </button>
         )

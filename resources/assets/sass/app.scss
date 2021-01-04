@@ -94,3 +94,21 @@ body {
 
 .border-top { border-top: 1px solid #e5e5e5; }
 .border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.restaurant-list .card {
+    display: inline-flex;
+    width: 31%;
+    margin: 5px;
+}
+
+.card-footer {
+    padding: 0;
+}
+
+.special {
+    display: flex;
+}
+
+.special .btn {
+    flex: 1
+}

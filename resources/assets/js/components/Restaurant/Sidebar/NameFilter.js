@@ -13,9 +13,14 @@ class NameFilter extends Component {
     }
 
     handleInputChange(event) {
+        // clear timeout when input changes value
+        clearTimeout(this.timeout);
         const value = event.target.value;
         this.setState({input: value});
         this.props.onNameTyping(this.state.input)
+        this.timeout = setTimeout(() => {
+            this.props.onNameTyping(this.state.input)
+        }, 1000);
     }
 
     handleInputKeyDown(event) {
