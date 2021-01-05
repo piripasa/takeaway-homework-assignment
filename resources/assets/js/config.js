@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://localhost:8000/api/';
+export const BASE_URL = process.env.MIX_API_URL;
 
 export const OPENING_STATUS = [
     {icon: 'fa-list', slug: '', text: 'All'},

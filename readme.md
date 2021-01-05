@@ -24,7 +24,7 @@ To do:
 - `docker-compose run --rm npm install` for installing js dependencies
 - `docker-compose run --rm npm test` for React test
  
- Base url `http://127.0.0.1:8000`.
+ Base url `http://localhost:8000`.
 
  
  ### CheckList

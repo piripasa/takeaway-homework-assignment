@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 set -e
+ [ -f ".env.example" ] || $(echo Please make an .env.example file --env=docker; exit 1)
+export $(cat .env.example | grep -v ^# | xargs);
 
 docker-compose down
 echo "Starting services"
@@ -14,5 +16,10 @@ docker-compose run --rm npm run prod
 docker-compose run --rm php chgrp -R www-data storage
 docker-compose run --rm php chmod -R ug+rwx storage
 
-#echo "Unit testing..."
-#sudo docker-compose exec php vendor/bin/phpunit
+echo "PHP Unit testing..."
+docker-compose run --rm php vendor/bin/phpunit
+
+echo "React Unit testing..."
+docker-compose run --rm npm test
+
+echo "Go to $APP_URL"
