@@ -25,7 +25,7 @@ abstract class BaseTransformer
         }
         $data = [];
         $results = $this->transformCollectionRaw($collection, $callback, ...$arguments);
-        $data = array_merge($data, [ $dataKey => $results->toArray() ]);
+        $data = array_merge($data, [ $dataKey => array_values($results->toArray()) ]);
         if ($collection instanceof Paginator) {
             $data['paginate'] = [
                 'current_page'  => $collection->currentPage(),

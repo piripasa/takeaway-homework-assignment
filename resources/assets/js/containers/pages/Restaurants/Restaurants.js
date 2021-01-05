@@ -17,6 +17,7 @@ class Restaurants extends Component {
             status: '',
             name: '',
             favourites: [],
+            page: 1
         };
         this.handleNameFilter = this.handleNameFilter.bind(this);
         this.handleStatusFilter = this.handleStatusFilter.bind(this);
@@ -24,6 +25,7 @@ class Restaurants extends Component {
         this.handleListSorting = this.handleListSorting.bind(this);
         this.handleFavourite = this.handleFavourite.bind(this);
         this.handleShowFavourites = this.handleShowFavourites.bind(this);
+        this.loadMore = this.loadMore.bind(this);
     }
 
     componentDidMount() {
@@ -32,25 +34,29 @@ class Restaurants extends Component {
 
     handleNameFilter(name) {
         this.setState({
-            name
+            name,
+            page: 1
         }, () => this.handleFilter());
     }
 
     handleStatusFilter(status) {
         this.setState({
-            status
+            status,
+            page: 1
         }, () => this.handleFilter());
     }
 
     handleSortingFilter(sortBy) {
         this.setState({
-            sortBy
+            sortBy,
+            page: 1
         }, () => this.handleFilter());
     }
 
     handleListSorting(sortType) {
         this.setState({
-            sortType
+            sortType,
+            page: 1
         }, () => this.handleFilter());
     }
 
@@ -67,8 +73,28 @@ class Restaurants extends Component {
 
     handleShowFavourites(favourites) {
         this.setState({
-            favourites
+            favourites,
+            page: 1
         }, () => this.handleFilter());
+    }
+
+    componentWillMount() {
+        window.addEventListener('scroll', this.loadMore);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.loadMore);
+    }
+
+    loadMore() {
+        const {pagination} = this.props
+        if (pagination.current_page < pagination.total_page) {
+            if (window.innerHeight + document.documentElement.scrollTop === document.scrollingElement.scrollHeight) {
+                this.setState({
+                    page: pagination.current_page + 1
+                }, () => this.handleFilter());
+            }
+        }
     }
 
     render() {
@@ -101,6 +127,7 @@ function mapStateToProps(state) {
     return {
         restaurants: state.restaurantReducer.restaurants,
         favourites: state.restaurantReducer.favorites,
+        pagination: state.restaurantReducer.pagination,
     }
 }
 

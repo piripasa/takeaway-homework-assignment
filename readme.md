@@ -40,3 +40,4 @@ To do:
  - [x] Remove user from group - admin
  - [x] PHP unit test cases
  - [x] React unit test cases
+ - [x] Load restaurants on scroll
